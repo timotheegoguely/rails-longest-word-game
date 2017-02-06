@@ -34,7 +34,7 @@ class LongestWordController < ApplicationController
     result = { time: end_time - Time.parse(start_time) }
 
     result[:translation] = get_translation(attempt)
-    result[:score], result[:message] = score_and_message(
+    result[:score], result[:message], result[:class] = score_and_message(
       attempt, result[:translation], grid, result[:time])
 
     result
@@ -44,12 +44,12 @@ class LongestWordController < ApplicationController
     if included?(attempt.upcase, grid)
       if translation
         score = compute_score(attempt, time)
-        [score, "well done"]
+        [score, "well done", "text-success"]
       else
-        [0, "not an english word"]
+        [0, "not an english word", "text-warning"]
       end
     else
-      [0, "not in the grid"]
+      [0, "not in the grid", "text-danger"]
     end
   end
 
