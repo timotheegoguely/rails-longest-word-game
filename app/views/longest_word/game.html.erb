@@ -1,0 +1,21 @@
+<div class="col-xs-10 col-xs-offset-1 col-sm-8 col-sm-offset-2">
+  <h1>Welcome to the longest word-game!</h1>
+  <hr>
+  <p id="grid">Here is your grid: <strong><%= @grid.join(" ") %></strong></p>
+
+  <form action="/score" class="form-horizontal" method="GET">
+    <div class="form-group form-group-lg">
+      <label for="question" class="control-label sr-only">What’s your best shot?</label>
+      <div class="col-xs-9">
+        <input type="hidden" id="grid" name="grid" value="<%= @grid.join('') %>">
+        <input type="hidden" id="startTime" name="start_time" value="<%= Time.now %>">
+        <input type="text" class="form-control" id="answer" name="answer" placeholder="What’s your best shot?">
+      </div>
+
+      <div class="col-xs-3">
+        <input type="submit" class="btn btn-lg btn-primary col-xs-12" value="Go">
+      </div> 
+    </div>
+  </form>
+
+</div>
